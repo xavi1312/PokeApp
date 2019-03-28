@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-12">
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <a class="navbar-brand" href="#">POKEDEX</a>
+  
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Normal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Fire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Water</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Electric</a>
+          </li>
+          <li class="nav-item">
+              <div ngbDropdown class="d-inline-block">
+                <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Other types</a>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Grass</button>
+                    <button ngbDropdownItem>Ice</button>
+                    <button ngbDropdownItem>Fighting</button>
+                    <button ngbDropdownItem>Poison</button>
+                    <button ngbDropdownItem>Ground</button>
+                    <button ngbDropdownItem>Flying</button>
+                    <button ngbDropdownItem>Psychic</button>
+                    <button ngbDropdownItem>Bug</button>
+                  </div>
+              </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <i class="fas fa-search seach"></i> 
+        </form>
+      </div>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-2">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Order by</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected value="name">Name</option>
+              <option value="height">Height</option>
+              <option value="attack">Attack</option>
+            </select>
+          </div>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <app-carta-pokemon *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></app-carta-pokemon>
+  </div>
+  <router-outlet></router-outlet>
+</div>
