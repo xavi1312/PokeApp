@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartaPokemonComponent } from './carta-pokemon/carta-pokemon.component';
+import { BuscadorPipe } from './pipes/buscador.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartaPokemonComponent
+    CartaPokemonComponent,
+    BuscadorPipe
   ],
   imports: [
     BrowserModule,

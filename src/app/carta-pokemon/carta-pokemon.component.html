@@ -1,9 +1,9 @@
 <div class="col-12 col-sm-4 col-lg-3 p-2 pb-4 card__container">
-  <article class="_card card" [ngClass]="pokemon.type[1]" [ngStyle]="{'height': mostrarStats ? '28.88rem' : '15.94rem' }">
+  <article class="_card card" [ngClass]="pokemon.type[1]">
     <header class="card__title card-header" [ngClass]="pokemon.type[0]" >
       <h2> {{pokemon.name}} </h2>
     </header>
-    <section class="card__infoContainer pb-0 card-body d-flex" [ngClass]="{'h-25': mostrarStats, 'h-100': !mostrarStats}">
+    <section class="card__infoContainer card-body d-flex" [ngClass]="{'h-25 pb-0': mostrarStats,'h-100': !mostrarStats}">
       <div class="card__imgContainer d-flex flex-wrap justify-content-center align-items-center">
         <img class="card__img rounded" [ngClass]="pokemon.color" [src]="pokemon.sprite" alt="">
       </div>
@@ -20,26 +20,26 @@
         </div>
       </div>
     </section>
-    <section class="card-body" [ngClass]="{ocult: !mostrarStats}">
-      <p class="card__statsContainer">
+    <section class="card-body card__statsContainer" [ngbCollapse]="!mostrarStats">
+      <p class="">
         <span class="w-25 d-inline-block">HP</span>
         <span class="w-75 d-inline-block">
           <ngb-progressbar showValue="true" type="success" [value]="pokemon.hp"></ngb-progressbar>
         </span>
       </p>
-      <p class="card__statsContainer">
+      <p class="">
         <span class="w-25 d-inline-block">Attack</span>
         <span class="w-75 d-inline-block">
           <ngb-progressbar showValue="true" type="success" [value]="pokemon.attack"></ngb-progressbar>
         </span>
       </p>
-      <p class="card__statsContainer">
+      <p class="">
         <span class="w-25 d-inline-block">Defense</span>
         <span class="w-75 d-inline-block">
           <ngb-progressbar showValue="true" type="success" [value]="pokemon.defense"></ngb-progressbar>
         </span>
       </p>
-      <p class="card__statsContainer">
+      <p class="">
         <span class="w-25 d-inline-block">Speed</span>
         <span class="w-75 d-inline-block">
           <ngb-progressbar showValue="true" type="success" [value]="pokemon.speed"></ngb-progressbar>
@@ -47,8 +47,8 @@
       </p>
     </section>
     <footer class="card-footer">
-      <button type="button" class="btn btn-warning mr-2"><i class="fas fa-pen"></i> Edit</button>
-      <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+      <button type="button" class="btn__1 btn btn-warning mr-2"><i class="fas fa-pen"></i> Edit</button>
+      <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</button>
     </footer>
   </article>
 </div>
