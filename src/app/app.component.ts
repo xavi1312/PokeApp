@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'pokemonApp';
   public isCollapsed = true;
   pokemons: Pokemon[] = [];
+  mostrarStats: Boolean = true; 
   constructor(private pokemonsService: PokemonsService) { }
 
   ngOnInit() {

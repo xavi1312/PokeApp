@@ -48,13 +48,12 @@ $typos: (
             background-color: $color1;
         }
         $Un_Dos: $key1+$key2;
-        @debug $Un_Dos;
         .bg-#{$Un_Dos}{
-            background: linear-gradient(110deg, $color1 50%, $color2 50%);
+            background: linear-gradient(110deg, $color1 60%, $color2 60%);
         }
         $Dos_Un: $key2+$key1;
         .bg-#{$Dos_Un}{
-            background: linear-gradient(110deg, $color2 50%, $color1 50%);
+            background: linear-gradient(110deg, $color2 60%, $color1 60%);
         }
 
         .br-#{$key1}{
@@ -82,13 +81,18 @@ $typos: (
     max-width: 340px;
 }
 ._card{
-    min-height: 25rem;
     transition: .7s;
     border-radius: .65rem;
     background-color: white;
     &:hover{
         transition: .7s;
         box-shadow: -1px 15px 30px -12px black;
+        .card__type,
+        .card__img
+        {
+            transition: 1.5s;
+            box-shadow: -1px 10px 18px -12px black;
+        }
     }
 }
 // Card header
@@ -97,12 +101,10 @@ $typos: (
     color: #fff;
     font-weight: normal;
     border-radius: calc(0.65rem - 1px) calc(0.65rem - 1px) 0 0;
+    border-bottom: none;
 }
 
 // Card data
-.card__imgContaienr{
-    width: 40%;
-}
 .card__typesDataContainer{
     width: 60%;
 }
@@ -115,7 +117,6 @@ $typos: (
     height: 2rem;
     color: #fff;
     font-weight: bold;
-    background-color: lightblue;
     border-radius: 4px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.575);
 }
@@ -137,4 +138,7 @@ ngb-progressbar {
 }
 .btn{
     color: #fff;
+}
+.ocult{
+    display: none;
 }

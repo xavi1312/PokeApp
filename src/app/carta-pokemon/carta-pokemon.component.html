@@ -1,15 +1,15 @@
 <div class="col-12 col-sm-4 col-lg-3 p-2 pb-4 card__container">
-  <article class="_card card" [ngClass]="pokemon.type[1]">
+  <article class="_card card" [ngClass]="pokemon.type[1]" [ngStyle]="{'height': mostrarStats ? '28.88rem' : '15.94rem' }">
     <header class="card__title card-header" [ngClass]="pokemon.type[0]" >
       <h2> {{pokemon.name}} </h2>
     </header>
-    <section class="card__infoContainer pb-0 card-body d-flex h-25">
+    <section class="card__infoContainer pb-0 card-body d-flex" [ngClass]="{'h-25': mostrarStats, 'h-100': !mostrarStats}">
       <div class="card__imgContainer d-flex flex-wrap justify-content-center align-items-center">
         <img class="card__img rounded" [ngClass]="pokemon.color" [src]="pokemon.sprite" alt="">
       </div>
       <div class="card__typesDataContainer pl-3">
         <div class="w-100 d-flex flex-wrap justify-content-between pb-1">
-          <div class="card__type d-flex justify-content-center align-items-center p-1" *ngFor="let type of pokemon.types">
+          <div class="card__type d-flex justify-content-center align-items-center p-1" [ngClass]="'bg-'+type" *ngFor="let type of pokemon.types">
             {{type}}
           </div>
         </div>
@@ -20,7 +20,7 @@
         </div>
       </div>
     </section>
-    <section class="card-body">
+    <section class="card-body" [ngClass]="{ocult: !mostrarStats}">
       <p class="card__statsContainer">
         <span class="w-25 d-inline-block">HP</span>
         <span class="w-75 d-inline-block">
