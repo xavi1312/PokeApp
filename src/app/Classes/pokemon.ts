@@ -10,4 +10,5 @@ export class Pokemon {
     "defense": Number;
     "speed": Number;
     "types": String[];
+    "type": String[];
 }

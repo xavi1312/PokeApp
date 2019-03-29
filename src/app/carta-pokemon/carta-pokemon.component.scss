@@ -1,12 +1,91 @@
+$colors: (
+    Green : #78C850,
+    Red   : red,
+    Blue  : #6890F0,
+    White : white,
+    Brown : brown,
+    Yellow: #F8D030,
+    Purple: #7038F8,
+    Pink  : #F0B6BC,
+    Gray  : #B8B8D0,
+);
+$typos: (
+    Normal  : #A8A878,
+    Fire    : #F08030,
+    Water   : #6890F0,
+    Grass   : #78C850,
+    Electric: #F8D030,
+    Ice     : #98D8D8,
+    Fighting: #7E1F1A,
+    Poison  : #351535,
+    Ground  : #E0C068,
+    Flying  : #A890F0,
+    Psychic : #F85888,
+    Bug     : #A8B820,
+    Rock    : #B8A038,
+    Ghost   : #705898,
+    Dark    : #705848,
+    Dragon  : #7038F8,
+    Steel   : #B8B8D0,
+    Fairy   : #F0B6BC,
+);
+@mixin border($colors) {
+    @each $key, $col in $colors {
+        &.#{$key}{
+            @if $col == white {
+                border-bottom: 3px solid darken($col, 5%);
+            }
+            @else{
+                border-bottom: 3px solid $col;
+            }
+        }
+    }
+}
+
+@each $key1, $color1 in $typos {
+    @each $key2, $color2 in $typos {
+        .bg-#{$key1}{
+            background-color: $color1;
+        }
+        $Un_Dos: $key1+$key2;
+        @debug $Un_Dos;
+        .bg-#{$Un_Dos}{
+            background: linear-gradient(110deg, $color1 50%, $color2 50%);
+        }
+        $Dos_Un: $key2+$key1;
+        .bg-#{$Dos_Un}{
+            background: linear-gradient(110deg, $color2 50%, $color1 50%);
+        }
+
+        .br-#{$key1}{
+            border: .5px solid $color1;
+        }
+        .br-#{$Un_Dos}{
+            border: .5px solid;
+            border-bottom-color: $color1;
+            border-left-color: $color1;
+            border-top-color: $color2;
+            border-right-color: $color2;
+        }
+        .br-#{$Dos_Un}{
+            border: .5px solid;
+            border-bottom-color: $color1;
+            border-left-color: $color2;
+            border-top-color: $color2;
+            border-right-color: $color1;
+        }
+    }
+}
+
 .card__container{
     min-width: 330px;
     max-width: 340px;
 }
 ._card{
     min-height: 25rem;
-    border: 1px solid blue;
     transition: .7s;
     border-radius: .65rem;
+    background-color: white;
     &:hover{
         transition: .7s;
         box-shadow: -1px 15px 30px -12px black;
@@ -17,7 +96,6 @@
     text-align: center;
     color: #fff;
     font-weight: normal;
-    background-color: blue;
     border-radius: calc(0.65rem - 1px) calc(0.65rem - 1px) 0 0;
 }
 
@@ -30,14 +108,11 @@
 }
 .card__img{
     border: 1px solid darken(gray, .2);
-    border-bottom: 3px solid green;
+    @include border($colors);
 }
 .card__type { 
-    width: 40%;
+    min-width: 40%;
     height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
     font-weight: bold;
     background-color: lightblue;

@@ -12,6 +12,20 @@ export class CartaPokemonComponent implements OnInit {
 
   @Input() pokemon : Pokemon;
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.pokemon.type = []; 
+    this.classe();
+  }
+
+  classe(){
+    let tipos : String ="";
+
+    this.pokemon.types.forEach(tipo => {
+      tipos = tipos +""+ tipo;
+    });
+    this.pokemon.type.push("bg-"+tipos);
+    this.pokemon.type.push("br-"+tipos);
+    console.log(this.pokemon.type)
+  }
 
 }
