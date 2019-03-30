@@ -13,6 +13,7 @@ export class AppComponent {
   mostrarStats: Boolean = true;
   buscador: String = "";
   filtreEstadistiques: string = "pokedex";
+  filtreTipus: String = '';
   maxStats = {
     hp:Number,
     attack: Number,
@@ -34,9 +35,6 @@ export class AppComponent {
       this.maxStats.attack = Math.max.apply(Math, pokemons.map(function(pok) { return pok.attack; }));
       this.maxStats.defense = Math.max.apply(Math, pokemons.map(function(pok) { return pok.defense; }));
       this.maxStats.speed = Math.max.apply(Math, pokemons.map(function(pok) { return pok.speed; }));
-
-      console.log(this.maxStats.hp)
     });
-    console.log(this.pokemons)
   }
 }

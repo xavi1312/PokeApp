@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { CartaPokemonComponent } from './carta-pokemon/carta-pokemon.component';
 import { BuscadorPipe } from './pipes/buscador.pipe';
 import { FiltreEstadistiquesPipe } from './pipes/filtre-estadistiques.pipe';
+import { FiltreTipusPipe } from './pipes/filtre-tipus.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartaPokemonComponent,
     BuscadorPipe,
-    FiltreEstadistiquesPipe
+    FiltreEstadistiquesPipe,
+    FiltreTipusPipe
   ],
   imports: [
     BrowserModule,

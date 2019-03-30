@@ -5,39 +5,39 @@
         [attr.aria-expanded]="!isCollapsed">
             <span class="navbar-toggler-icon"></span>
           </button>
-      <a class="navbar-brand" href="#">POKEDEX</a>
+      <a class="navbar-brand" (click)="filtreTipus=''">POKEDEX</a>
   
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" (click)="filtreTipus=''">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Normal</a>
+            <a class="nav-link" (click)="filtreTipus='Normal'" >Normal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Fire</a>
+            <a class="nav-link" (click)="filtreTipus='Fire'" >Fire</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Water</a>
+            <a class="nav-link" (click)="filtreTipus='Water'" >Water</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Electric</a>
+            <a class="nav-link" (click)="filtreTipus='Electric'" >Electric</a>
           </li>
-          <li class="nav-item">
-              <div ngbDropdown class="d-inline-block">
-                <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Other types</a>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Grass</button>
-                    <button ngbDropdownItem>Ice</button>
-                    <button ngbDropdownItem>Fighting</button>
-                    <button ngbDropdownItem>Poison</button>
-                    <button ngbDropdownItem>Ground</button>
-                    <button ngbDropdownItem>Flying</button>
-                    <button ngbDropdownItem>Psychic</button>
-                    <button ngbDropdownItem>Bug</button>
-                  </div>
-              </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other types
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" (click)="filtreTipus='Grass'">Grass</a>
+              <a class="dropdown-item" (click)="filtreTipus='Ice'">Ice</a>
+              <a class="dropdown-item" (click)="filtreTipus='Fighting'">Fighting</a>
+              <a class="dropdown-item" (click)="filtreTipus='Poison'">Poison</a>
+              <a class="dropdown-item" (click)="filtreTipus='Ground'">Ground</a>
+              <a class="dropdown-item" (click)="filtreTipus='Flying'">Flying</a>
+              <a class="dropdown-item" (click)="filtreTipus='Psychic'">Psychic</a>
+              <a class="dropdown-item" (click)="filtreTipus='Bug'">Bug</a>
+            </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -74,7 +74,7 @@
   </div>
   <div class="row justify-content-around">
     <app-carta-pokemon 
-      *ngFor="let pokemon of pokemons | buscador: buscador | filtreEstadistiques: filtreEstadistiques"
+      *ngFor="let pokemon of pokemons | buscador: buscador | filtreEstadistiques: filtreEstadistiques | filtreTipus: filtreTipus"
       [mostrarStats]="mostrarStats" 
       [pokemon]="pokemon"
       [maxStats]="maxStats">
