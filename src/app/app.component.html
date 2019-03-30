@@ -41,7 +41,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="buscador" name="something">
           <i class="fas fa-search seach ml-1 mt-2 mt-sm-0"></i> 
         </form>
       </div>
@@ -53,8 +53,9 @@
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Order by</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected value="name">Name</option>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="filtreEstadistiques" name="something2">
+              <option selected value="pokedex">Pokedex order</option>
+              <option value="name">Name</option>
               <option value="height">Height</option>
               <option value="attack">Attack</option>
             </select>
@@ -72,7 +73,12 @@
     </div>
   </div>
   <div class="row justify-content-around">
-    <app-carta-pokemon *ngFor="let pokemon of pokemons" [mostrarStats]="mostrarStats" [pokemon]="pokemon"></app-carta-pokemon>
+    <app-carta-pokemon 
+      *ngFor="let pokemon of pokemons | buscador: buscador | filtreEstadistiques: filtreEstadistiques"
+      [mostrarStats]="mostrarStats" 
+      [pokemon]="pokemon"
+      [maxStats]="maxStats">
+    </app-carta-pokemon>
   </div>
   <router-outlet></router-outlet>
 </div>

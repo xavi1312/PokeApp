@@ -8,17 +8,35 @@ import { PokemonsService } from './Serveis/pokemons.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pokemonApp';
   public isCollapsed = true;
   pokemons: Pokemon[] = [];
-  mostrarStats: Boolean = true; 
+  mostrarStats: Boolean = true;
+  buscador: String = "";
+  filtreEstadistiques: string = "pokedex";
+  maxStats = {
+    hp:Number,
+    attack: Number,
+    defense: Number,
+    speed: Number
+  }
+
   constructor(private pokemonsService: PokemonsService) { }
 
   ngOnInit() {
-    this.showConfig();
+    this.getPokemons();
   }
-  showConfig() {
+  getPokemons() {
     this.pokemonsService.totsPokemons()
-      .subscribe(pokemons => this.pokemons = pokemons);
+    .subscribe(pokemons => {
+      this.pokemons = pokemons;
+
+      this.maxStats.hp = Math.max.apply(Math, pokemons.map(function(pok) { return pok.hp; }));
+      this.maxStats.attack = Math.max.apply(Math, pokemons.map(function(pok) { return pok.attack; }));
+      this.maxStats.defense = Math.max.apply(Math, pokemons.map(function(pok) { return pok.defense; }));
+      this.maxStats.speed = Math.max.apply(Math, pokemons.map(function(pok) { return pok.speed; }));
+
+      console.log(this.maxStats.hp)
+    });
+    console.log(this.pokemons)
   }
 }

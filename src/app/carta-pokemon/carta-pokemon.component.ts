@@ -11,6 +11,7 @@ export class CartaPokemonComponent implements OnInit {
 
   @Input() pokemon     : Pokemon;
   @Input() mostrarStats: Boolean;
+  @Input() maxStats    : any;
 
   ngOnInit() {
     this.pokemon.type = []; 

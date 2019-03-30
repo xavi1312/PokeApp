@@ -24,25 +24,25 @@
       <p class="">
         <span class="w-25 d-inline-block">HP</span>
         <span class="w-75 d-inline-block">
-          <ngb-progressbar showValue="true" type="success" [value]="pokemon.hp"></ngb-progressbar>
+          <ngb-progressbar type="success" [value]="pokemon.hp" [max]="maxStats.hp">{{pokemon.hp}}</ngb-progressbar>
         </span>
       </p>
       <p class="">
         <span class="w-25 d-inline-block">Attack</span>
         <span class="w-75 d-inline-block">
-          <ngb-progressbar showValue="true" type="success" [value]="pokemon.attack"></ngb-progressbar>
+          <ngb-progressbar type="success" [value]="pokemon.attack" [max]="maxStats.attack">{{pokemon.attack}}</ngb-progressbar>
         </span>
       </p>
       <p class="">
         <span class="w-25 d-inline-block">Defense</span>
         <span class="w-75 d-inline-block">
-          <ngb-progressbar showValue="true" type="success" [value]="pokemon.defense"></ngb-progressbar>
+          <ngb-progressbar type="success" [value]="pokemon.defense" [max]="maxStats.defense">{{pokemon.defense}}</ngb-progressbar>
         </span>
       </p>
       <p class="">
         <span class="w-25 d-inline-block">Speed</span>
         <span class="w-75 d-inline-block">
-          <ngb-progressbar showValue="true" type="success" [value]="pokemon.speed"></ngb-progressbar>
+          <ngb-progressbar type="success" [value]="pokemon.speed" [max]="maxStats.speed">{{pokemon.speed}}</ngb-progressbar>
         </span>
       </p>
     </section>
