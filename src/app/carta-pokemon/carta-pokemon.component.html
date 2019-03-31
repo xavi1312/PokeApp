@@ -1,6 +1,7 @@
 <div class="col-12 col-sm-4 col-lg-3 p-2 pb-4 card__container">
-  <article class="_card card" [ngClass]="pokemon.type[1]">
+  <article class="_card card"  [ngClass]="{'girar': isGirar}">
     <header class="card__title card-header" [ngClass]="pokemon.type[0]" >
+      <i class="fas fa-undo-alt" (click)="isGirar = !isGirar"></i>
       <h2> {{pokemon.name}} </h2>
     </header>
     <section class="card__infoContainer card-body d-flex" [ngClass]="{'h-25 pb-0': mostrarStats,'h-100': !mostrarStats}">
@@ -47,8 +48,28 @@
       </p>
     </section>
     <footer class="card-footer">
-      <button type="button" class="btn__1 btn btn-warning mr-2"><i class="fas fa-pen"></i> Edit</button>
+      <button type="button" class="btn__1 btn btn-warning mr-2" (click)="open(content)"><i class="fas fa-pen"></i> Edit</button>
       <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Delete</button>
     </footer>
   </article>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Pokeditor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body d-flex justify-content-center flex-wrap">
+    <div class="input-group mb-3 w-75" *ngFor="let item of form | keyvalue">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">{{item.key}}</span>
+      </div>
+      <input type="text" [(ngModel)]="item.value" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="saveEdit();c('Save click')">Save</button>
+  </div>
+</ng-template>
