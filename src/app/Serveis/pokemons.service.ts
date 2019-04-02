@@ -15,4 +15,5 @@ export class PokemonsService {
   public totsPokemons(): Observable<Pokemon[]>{
     return this.http.get<Pokemon[]>(this.url);
   }
+  
 }

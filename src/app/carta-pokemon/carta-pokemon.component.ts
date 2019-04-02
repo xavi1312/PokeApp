@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from '../Classes/pokemon';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalEditComponent } from '../modal-edit/modal-edit.component'
+
 @Component({
   selector: 'app-carta-pokemon',
   templateUrl: './carta-pokemon.component.html',
@@ -13,25 +15,16 @@ export class CartaPokemonComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
-
-  form:any = {
-    hp: String,
-    attack: String,
-    defensa: String,
-    speed: String
-  }
+  
   isGirar: Boolean = false;
   @Input() pokemon     : Pokemon;
   @Input() mostrarStats: Boolean;
   @Input() maxStats    : any;
+  poke: Pokemon;
 
   ngOnInit() {
     this.pokemon.type = []; 
     this.classe();
-    this.form.hp = this.pokemon.hp.toString();
-    this.form.attack = this.pokemon.attack.toString();
-    this.form.defensa = this.pokemon.defense.toString();
-    this.form.speed = this.pokemon.speed.toString();
   }
   classe(){
     let tipos : String ="";
@@ -42,11 +35,13 @@ export class CartaPokemonComponent implements OnInit {
     this.pokemon.type.push("bg-"+tipos);
     this.pokemon.type.push("br-"+tipos);
   }
-
   open(content) {
     this.modalService.open(content);
   }
+  rebreCanvis($event){
+    this.poke = $event;
+  }
   saveEdit(){
-    console.table(this.form);
+    console.table(this.poke);
   }
 }

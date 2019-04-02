@@ -53,7 +53,6 @@
     </footer>
   </article>
 </div>
-
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Pokeditor</h4>
@@ -61,14 +60,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body d-flex justify-content-center flex-wrap">
-    <div class="input-group mb-3 w-75" *ngFor="let item of form | keyvalue">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">{{item.key}}</span>
-      </div>
-      <input type="text" [(ngModel)]="item.value" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-    </div>
-  </div>
+  <app-modal-edit [pokemon]="pokemon" (pokemon_)="rebreCanvis($event)"></app-modal-edit>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-success" (click)="saveEdit();c('Save click')">Save</button>
   </div>

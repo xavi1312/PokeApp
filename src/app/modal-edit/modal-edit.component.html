@@ -1,0 +1,27 @@
+
+<div class="modal-body d-flex justify-content-center flex-wrap">
+  <div class="input-group mb-3 w-75">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">HP</span>
+    </div>
+    <input type="text" (change)="enviarCanvis()" [(ngModel)]="poke.hp" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div class="input-group mb-3 w-75">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Attack</span>
+    </div>
+    <input type="text" (change)="enviarCanvis()" [(ngModel)]="poke.attack" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div class="input-group mb-3 w-75">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Defense</span>
+    </div>
+    <input type="text" (change)="enviarCanvis()" [(ngModel)]="poke.defense" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+  <div class="input-group mb-3 w-75">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Speed</span>
+    </div>
+    <input type="text" (change)="enviarCanvis()" [(ngModel)]="poke.speed" class="form-control fc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+  </div>
+</div>

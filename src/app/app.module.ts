@@ -10,6 +10,7 @@ import { CartaPokemonComponent } from './carta-pokemon/carta-pokemon.component';
 import { BuscadorPipe } from './pipes/buscador.pipe';
 import { FiltreEstadistiquesPipe } from './pipes/filtre-estadistiques.pipe';
 import { FiltreTipusPipe } from './pipes/filtre-tipus.pipe';
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FiltreTipusPipe } from './pipes/filtre-tipus.pipe';
     CartaPokemonComponent,
     BuscadorPipe,
     FiltreEstadistiquesPipe,
-    FiltreTipusPipe
+    FiltreTipusPipe,
+    ModalEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { FiltreTipusPipe } from './pipes/filtre-tipus.pipe';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ModalEditComponent ]
 })
 export class AppModule { }
