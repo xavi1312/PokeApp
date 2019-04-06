@@ -12,3 +12,35 @@
 {
     cursor: pointer;
 }
+.nav-item.dropdown{
+    flex-wrap: wrap;
+    & > div{
+        width: 100%;
+    }
+}
+.nav-item,
+.nav-link{
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+.ico__type{
+    width: 35px;
+    height: 35px;
+    margin-right: .4rem;
+}
+.input-group-text{
+    i{
+        transition: 1s;
+    }
+}
+footer{
+    height: 3rem;
+    color: #fff;
+    text-align: center;
+    & > *{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

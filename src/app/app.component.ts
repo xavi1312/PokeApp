@@ -14,6 +14,8 @@ export class AppComponent {
   buscador: String = "";
   filtreEstadistiques: string = "pokedex";
   filtreTipus: String = '';
+  private isAscendent = true;
+
   maxStats = {
     hp:Number,
     attack: Number,
@@ -27,7 +29,7 @@ export class AppComponent {
     this.getPokemons();
   }
   getPokemons() {
-    this.pokemonsService.totsPokemons()
+    this.pokemonsService.getPokemonsAPI()
     .subscribe(pokemons => {
       this.pokemons = pokemons;
 

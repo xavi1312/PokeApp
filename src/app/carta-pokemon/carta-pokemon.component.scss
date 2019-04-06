@@ -75,23 +75,17 @@ $typos: (
         }
     }
 }
-i.fas.fa-undo-alt{
+header i{
     position: absolute;
     top: .5em;
     right: .5em;
     &:hover{
-        animation: rot 1s;
+        animation: rot 2s;
     }
 }
 @keyframes rot {
-    0%{
-
-    }
-    50%{
-        transform: rotateZ(-70deg);
-    }
     100%{
-        transform: rotateZ(0deg);
+        transform: rotateZ(360deg);
     }
 }
 .card__container{

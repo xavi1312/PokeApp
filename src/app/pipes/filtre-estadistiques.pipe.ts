@@ -6,36 +6,20 @@ import { Pokemon } from '../Classes/pokemon';
 })
 export class FiltreEstadistiquesPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    if(args == 'pokedex'){
+  transform(pokeArray: any, stat:string, ascendent: Boolean): any {
 
-      return value.sort( function(a:Pokemon, b:Pokemon){
-        if(a.id < b.id) return -1;
-        else return 1;
-      });
+    let pokeArrayFiltrat = [];
 
-    }else if(args == 'name'){
+    switch(stat){
+      case 'pokedex': pokeArrayFiltrat = pokeArray.sort( (a:Pokemon, b:Pokemon) => {return (a.id < b.id)         ?  -1 :  1; });break;
+      case 'name'   : pokeArrayFiltrat = pokeArray.sort( (a:Pokemon, b:Pokemon) => {return (a.name < b.name)     ?  -1 :  1; });break;
+      case 'attack' : pokeArrayFiltrat = pokeArray.sort( (a:Pokemon, b:Pokemon) => {return (a.attack < b.attack) ?  -1 :  1; });break;
+      default       : pokeArrayFiltrat = pokeArray.sort( (a:Pokemon, b:Pokemon) => {return (a.height < b.height) ?  -1 :  1; });break;
+    }
 
-      return value.sort( function(a:Pokemon, b:Pokemon){
-        if(a.name < b.name) return -1;
-        else return 1;
-      });
+    if(!ascendent) { return pokeArrayFiltrat.reverse() }
 
-    }else if(args == 'attack'){
-
-      return value.sort( function(a:Pokemon, b:Pokemon){
-        if(a.attack < b.attack) return 1;
-        else return -1;
-      });
-
-    }else{
-
-      return value.sort( function(a:Pokemon, b:Pokemon){
-        if(a.height < b.height) return 1;
-        else return -1;
-      });
-
-    }    
+    return pokeArrayFiltrat;
   }
 
 }

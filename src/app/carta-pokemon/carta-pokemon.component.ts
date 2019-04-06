@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from '../Classes/pokemon';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalEditComponent } from '../modal-edit/modal-edit.component'
+import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonsService } from '../Serveis/pokemons.service';
 
 @Component({
   selector: 'app-carta-pokemon',
@@ -11,17 +11,20 @@ import { ModalEditComponent } from '../modal-edit/modal-edit.component'
 })
 export class CartaPokemonComponent implements OnInit {
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private pokeService: PokemonsService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
   
-  isGirar: Boolean = false;
   @Input() pokemon     : Pokemon;
   @Input() mostrarStats: Boolean;
   @Input() maxStats    : any;
-  poke: Pokemon;
+  private isGirar: Boolean = false;
+  private poke: Pokemon;
 
+  eliminar(){
+    this.pokeService.deletePokemon(this.pokemon.id).subscribe((response)=> console.log(response));
+  }
   ngOnInit() {
     this.pokemon.type = []; 
     this.classe();
@@ -38,10 +41,13 @@ export class CartaPokemonComponent implements OnInit {
   open(content) {
     this.modalService.open(content);
   }
+
   rebreCanvis($event){
     this.poke = $event;
   }
   saveEdit(){
-    console.table(this.poke);
+    if(this.poke){ 
+      this.pokeService.editpokemon(this.poke).subscribe((response)=> console.log(Response));
+    }else alert("No pots grardar sense modificar un stat");
   }
 }

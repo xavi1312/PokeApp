@@ -29,41 +29,13 @@
       ]
     },
     {
-      "id": 2,
-      "name": "Ivysaur",
-      "height": 1,
-      "weight": 13,
-      "color": "Green",
-      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-      "hp": 60,
-      "attack": 62,
-      "defense": 63,
-      "speed": 60,
-      "types": [
-        "Grass",
-        "Poison"
-      ],
-      "genderRatio": {
-        "M": 0.875,
-        "F": 0.125
-      },
-      "abilities": {
-        "0": "Overgrow",
-        "H": "Chlorophyll"
-      },
-      "eggGroups": [
-        "Monster",
-        "Grass"
-      ]
-    },
-    {
       "id": 3,
       "name": "Venusaur-Mega",
       "height": 2.4,
       "weight": 155.5,
       "color": "Green",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-      "hp": 80,
+      "hp": 120,
       "attack": 100,
       "defense": 123,
       "speed": 80,
@@ -81,6 +53,10 @@
       "eggGroups": [
         "Monster",
         "Grass"
+      ],
+      "type": [
+        "bg-GrassPoison",
+        "br-GrassPoison"
       ]
     },
     {
@@ -2669,29 +2645,6 @@
       ]
     },
     {
-      "id": 100,
-      "name": "Voltorb",
-      "height": 0.5,
-      "weight": 10.4,
-      "color": "Red",
-      "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png",
-      "hp": 40,
-      "attack": 30,
-      "defense": 50,
-      "speed": 100,
-      "types": [
-        "Electric"
-      ],
-      "abilities": {
-        "0": "Soundproof",
-        "1": "Static",
-        "H": "Aftermath"
-      },
-      "eggGroups": [
-        "Mineral"
-      ]
-    },
-    {
       "id": 101,
       "name": "Electrode",
       "height": 1.2,
@@ -3415,26 +3368,29 @@
     },
     {
       "id": 130,
-      "name": "Gyarados",
+      "name": "Gyarados-Mega",
       "height": 6.5,
-      "weight": 235,
+      "weight": 305,
       "color": "Blue",
       "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
-      "hp": 95,
-      "attack": 125,
-      "defense": 79,
+      "hp": 84,
+      "attack": 155,
+      "defense": 109,
       "speed": 81,
       "types": [
         "Water",
-        "Flying"
+        "Dark"
       ],
       "abilities": {
-        "0": "Intimidate",
-        "H": "Moxie"
+        "0": "Mold Breaker"
       },
       "eggGroups": [
         "Water 2",
         "Dragon"
+      ],
+      "type": [
+        "bg-WaterDark",
+        "br-WaterDark"
       ]
     },
     {

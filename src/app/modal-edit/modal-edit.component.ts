@@ -34,6 +34,6 @@ export class ModalEditComponent implements OnInit {
    }
 
   enviarCanvis(){
-    this.pokemon_.emit(this.pokemon);
+    this.pokemon_.emit(this.poke);
   }
 }
