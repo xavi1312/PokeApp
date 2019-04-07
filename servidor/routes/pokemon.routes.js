@@ -8,4 +8,6 @@ router.post('/', pokemonCtrl.createPokemon);
 router.get('/:id', pokemonCtrl.getPokemons);
 router.delete('/:id', pokemonCtrl.deletePokemon);
 
+router.get('/type=:type', pokemonCtrl.getPokemonType);
+
 module.exports = router;

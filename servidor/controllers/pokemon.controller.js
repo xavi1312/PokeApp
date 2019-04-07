@@ -2,9 +2,6 @@ const Pokemon = require('../models/pokemon');
 
 const pokemonCtrl = {};
 
-
-
-
 pokemonCtrl.getPokemons = async (req, res) => {
     const pokemons = await Pokemon.find();
     res.json(pokemons);
@@ -13,9 +10,7 @@ pokemonCtrl.getPokemons = async (req, res) => {
 pokemonCtrl.createPokemon = async (req, res) => {
     const pokemon = new Pokemon(req.body);
     await pokemon.save();
-    res.json({
-        "status": 'Pokemon gurdat'
-    });
+    res.json({"status": 'Pokemon gurdat'});
 };
 
 pokemonCtrl.getPokemon = async (req, res) => {
@@ -35,6 +30,12 @@ pokemonCtrl.deletePokemon = async (req, res) => {
     const { id } = req.params;
     await Pokemon.findByIdAndRemove(id);
     res.json({status: 'Pokemon borrado'});
+};
+
+pokemonCtrl.getPokemonType = async (req, res) => {
+    const { type } = req.params;
+    const pokemons = await Pokemon.find({types: type});
+    res.json(pokemons);
 };
 
 module.exports = pokemonCtrl;
