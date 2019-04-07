@@ -1,0 +1,164 @@
+$colors: (
+    Green : #78C850,
+    Red   : red,
+    Blue  : #6890F0,
+    White : white,
+    Brown : brown,
+    Yellow: #F8D030,
+    Purple: #7038F8,
+    Pink  : #F0B6BC,
+    Gray  : #B8B8D0,
+);
+$typos: (
+    Normal  : #A8A878,
+    Fire    : #F08030,
+    Water   : #6890F0,
+    Grass   : #78C850,
+    Electric: #F8D030,
+    Ice     : #98D8D8,
+    Fighting: #7E1F1A,
+    Poison  : #351535,
+    Ground  : #E0C068,
+    Flying  : #A890F0,
+    Psychic : #F85888,
+    Bug     : #A8B820,
+    Rock    : #B8A038,
+    Ghost   : #705898,
+    Dark    : #705848,
+    Dragon  : #7038F8,
+    Steel   : #B8B8D0,
+    Fairy   : #F0B6BC,
+);
+@mixin border($colors) {
+    @each $key, $col in $colors {
+        &.#{$key}{
+            @if $col == white {
+                border-bottom: 3px solid darken($col, 5%);
+            }
+            @else{
+                border-bottom: 3px solid $col;
+            }
+        }
+    }
+}
+
+@each $key1, $color1 in $typos {
+    @each $key2, $color2 in $typos {
+        .bg-#{$key1}{
+            background-color: $color1;
+        }
+        $Un_Dos: $key1+$key2;
+        .bg-#{$Un_Dos}{
+            background: linear-gradient(110deg, $color1 60%, $color2 60%);
+        }
+        $Dos_Un: $key2+$key1;
+        .bg-#{$Dos_Un}{
+            background: linear-gradient(110deg, $color2 60%, $color1 60%);
+        }
+
+        .br-#{$key1}{
+            border: .5px solid $color1;
+        }
+        .br-#{$Un_Dos}{
+            border: .5px solid;
+            border-bottom-color: $color1;
+            border-left-color: $color1;
+            border-top-color: $color2;
+            border-right-color: $color2;
+        }
+        .br-#{$Dos_Un}{
+            border: .5px solid;
+            border-bottom-color: $color1;
+            border-left-color: $color2;
+            border-top-color: $color2;
+            border-right-color: $color1;
+        }
+    }
+}
+header i{
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    &:hover{
+        animation: rot 2s;
+    }
+}
+@keyframes rot {
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+.card__container{
+    min-width: 330px;
+    max-width: 340px;
+}
+._card{
+    transition: .7s;
+    border-radius: .65rem;
+    background-color: white;
+    //backface-visibility: hidden;
+    
+    &:hover{
+        transition: .7s;
+        box-shadow: -1px 15px 30px -12px black;
+        .card__type,
+        .card__img
+        {
+            transition: 1.5s;
+            box-shadow: -1px 10px 18px -12px black;
+        }
+    }
+    &.girar{
+        transform: rotateY(180deg);
+    }
+}
+.posterior{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+// Card header
+.card__title{
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+    border-radius: calc(.65rem - 1px) calc(.65rem - 1px) 0 0;
+    border-bottom: none;
+}
+
+// Card data
+.card__typesDataContainer{
+    width: 60%;
+}
+.card__img{
+    border: 1px solid darken(gray, .2);
+    @include border($colors);
+}
+.card__type { 
+    min-width: 40%;
+    height: 2rem;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.575);
+}
+.card__dataContainer{
+    p{
+        margin: 0;
+    }
+}
+// Card body
+ngb-progressbar {
+    margin-top: 5rem;
+}
+
+// Card footer
+.card-footer{
+    display: flex;
+    align-items: center;
+}
+.btn__1{
+    color: #fff;
+}

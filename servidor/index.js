@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const path = require('path')
 
 const { mongoose } = require('./database');
+
+// Static fields
+//app.use(express.static(path.join(__dirname, 'public/dist/pokemonApp')));
+app.use(express.static('public/dist/pokemonApp'));
 
 // Settings
 app.set('port', process.env.PORT || 3000);

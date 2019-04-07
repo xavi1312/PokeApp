@@ -1,0 +1,82 @@
+<div class="col-12 col-sm-4 col-lg-3 p-2 pb-4 card__container">
+  <article class="_card card"  [ngClass]="{'girar': isGirar}">
+    <header class="card__title card-header" [ngClass]="pokemon.type[0]" >
+        <i class="fas fa-sync-alt" (click)="isGirar = !isGirar"></i>
+      <h2> {{pokemon.name}} </h2>
+    </header>
+    <section class="card__infoContainer card-body d-flex" [ngClass]="{'h-25 pb-0': mostrarStats,'h-100': !mostrarStats}">
+      <div class="card__imgContainer d-flex flex-wrap justify-content-center align-items-center">
+        <img class="card__img rounded" [ngClass]="pokemon.color" [src]="pokemon.sprite" alt="">
+      </div>
+      <div class="card__typesDataContainer pl-3">
+        <div class="w-100 d-flex flex-wrap justify-content-between pb-1">
+          <div class="card__type d-flex justify-content-center align-items-center p-1" [ngClass]="'bg-'+type" *ngFor="let type of pokemon.types">
+            {{type}}
+          </div>
+        </div>
+        <div class="card__dataContainer w-100">
+          <p> <strong>Height:</strong> {{pokemon.height}}</p>
+          <p> <strong>Weight:</strong> {{pokemon.weight}}</p>
+          <p> <strong>Color:</strong> {{pokemon.color}}</p>
+        </div>
+      </div>
+    </section>
+    <section class="card-body card__statsContainer" [ngbCollapse]="!mostrarStats">
+      <p class="">
+        <span class="w-25 d-inline-block">HP</span>
+        <span class="w-75 d-inline-block">
+          <ngb-progressbar type="success" [value]="pokemon.hp" [max]="maxStats.hp">{{pokemon.hp}}</ngb-progressbar>
+        </span>
+      </p>
+      <p class="">
+        <span class="w-25 d-inline-block">Attack</span>
+        <span class="w-75 d-inline-block">
+          <ngb-progressbar type="success" [value]="pokemon.attack" [max]="maxStats.attack">{{pokemon.attack}}</ngb-progressbar>
+        </span>
+      </p>
+      <p class="">
+        <span class="w-25 d-inline-block">Defense</span>
+        <span class="w-75 d-inline-block">
+          <ngb-progressbar type="success" [value]="pokemon.defense" [max]="maxStats.defense">{{pokemon.defense}}</ngb-progressbar>
+        </span>
+      </p>
+      <p class="">
+        <span class="w-25 d-inline-block">Speed</span>
+        <span class="w-75 d-inline-block">
+          <ngb-progressbar type="success" [value]="pokemon.speed" [max]="maxStats.speed">{{pokemon.speed}}</ngb-progressbar>
+        </span>
+      </p>
+    </section>
+    <footer class="card-footer">
+      <button type="button" class="btn__1 btn btn-warning mr-2" (click)="open(edit)"><i class="fas fa-pen"></i> Edit</button>
+      <button type="button" class="btn btn-outline-danger" (click)="open(delete)"><i class="fas fa-trash-alt"></i> Delete</button>
+    </footer>
+  </article>
+</div>
+<ng-template #edit let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Pokeditor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-modal-edit [pokemon]="pokemon" (pokemon_)="rebreCanvis($event)"></app-modal-edit>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="saveEdit();c('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #delete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Pokedelete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <h4>Are you sure you want to delete the pokemon</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="eliminar();c('Save click')">DELETE</button>
+  </div>
+</ng-template>

@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-12">
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <a class="navbar-brand"(click)="filtreTipus=''">
+        <img src="assets/images/pokeball.ico" width="50" height="50" alt="">
+      </a>
+  
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" (click)="filtreTipus='Normal'" >
+              <img src="assets/images/normal.ico" class="ico__type" alt=""> <span>Normal</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="filtreTipus='Fire'" >
+                <img src="assets/images/fire.ico" class="ico__type" alt="">
+                <span>Fire</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="filtreTipus='Water'">
+                <img src="assets/images/whater.ico" class="ico__type" alt=""> 
+                <span>Whater</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="filtreTipus='Electric'" >
+                <img src="assets/images/electric.ico" class="ico__type" alt="">
+                <span>Electric</span>
+              </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other types
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" (click)="filtreTipus='Grass'">
+                <img src="assets/images/grass.ico" class="ico__type"  alt=""><span>Grass</span>
+              </a>
+              <a class="dropdown-item" (click)="filtreTipus='Ice'"><img src="assets/images/ice.ico" class="ico__type" alt=""><span>Ice</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Fighting'"><img src="assets/images/fighting.ico" class="ico__type" alt=""><span>Fighting</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Poison'"><img src="assets/images/poison.ico" class="ico__type" alt=""><span>Poison</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Ground'"><img src="assets/images/ground.ico" class="ico__type" alt=""><span>Ground</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Flying'"><img src="assets/images/flying.ico" class="ico__type" alt=""><span>Flying</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Psychic'"><img src="assets/images/psychic.ico" class="ico__type" alt=""><span>Psychic</span></a>
+              <a class="dropdown-item" (click)="filtreTipus='Bug'"><img src="assets/images/bug.ico" class="ico__type" alt=""><span>Bug</span></a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="buscador" name="something">
+          <i class="fas fa-search seach ml-1 mt-2 mt-sm-0"></i> 
+        </form>
+      </div>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-2">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Order by</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="filtreEstadistiques" name="something2">
+              <option selected value="pokedex">Pokedex order</option>
+              <option value="name">Name</option>
+              <option value="height">Height</option>
+              <option value="attack">Attack</option>
+            </select>
+            <div class="input-group-append">
+              <div class="input-group-text" (click)="isAscendent = !isAscendent">
+                <i class="fas" [ngClass]="{'fa-sort-amount-up': isAscendent, 'fa-sort-amount-down' : !isAscendent}"></i>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-2">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" (change)="mostrarStats = !mostrarStats" aria-label="Checkbox for following text input">
+          </div>
+        </div>
+        <div class="form-control">Don't show statistics</div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-around min-vh-100">
+    <app-carta-pokemon 
+      *ngFor="let pokemon of pokemons | buscador: buscador | filtreEstadistiques: filtreEstadistiques:isAscendent | filtreTipus: filtreTipus"
+      [mostrarStats]="mostrarStats" 
+      [pokemon]="pokemon"
+      [maxStats]="maxStats">
+    </app-carta-pokemon>
+  </div>
+  <footer class="row bg-dark">
+    <div class="col-12 col-md-6">
+      <i class="fas fa-info mr-2"></i>
+      <span>PokeApp</span>
+    </div>
+    <div class="col-12 col-md-6">
+        <i class="fas fa-user mr-2"></i>
+      <span>Autor: Xavi Isach Alemany</span>
+    </div>
+  </footer>
+  <router-outlet></router-outlet>
+</div>
